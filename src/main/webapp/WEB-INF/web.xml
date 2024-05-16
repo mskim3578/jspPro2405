@@ -9,7 +9,8 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  <context-param>
+  
+ <!--  <context-param>
   <description>sample1</description>
   <param-name>pname</param-name>
   <param-value>10</param-value>  
@@ -33,6 +34,15 @@
   <exception-type>java.lang.NumberFormatException</exception-type>
   <location>/ch05_error/errorNumberFormat.jsp</location>
   </error-page>
+   -->
+  <jsp-config>
+  <jsp-property-group>
+  <url-pattern>/ch08_kicmember/*</url-pattern>
+  <include-prelude>/common/head.jsp</include-prelude>
+  </jsp-property-group>  
+  </jsp-config>
+  
+  
   
   
 </web-app>

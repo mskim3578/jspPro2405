@@ -1,8 +1,11 @@
+drop table guestbook;
+
 create table guestbook (
-ser int,
+ser int primary key,
 name varchar2(20),
 title varchar(200),
-content varchar(4000));
+content varchar(4000),
+regdate date);
 
 create sequence bookseq;
 

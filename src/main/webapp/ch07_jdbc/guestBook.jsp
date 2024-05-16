@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,12 +24,14 @@
 		<h2>박명록</h2>
 		<form method="post">
 			<div class="form-group">
-				<label for="name">이름</label> <input type="text" class="form-control"
-					id="name" placeholder="Enter name" >
+				<label for="name">이름</label> 
+				<input type="text" class="form-control"
+					id="name" placeholder="Enter name" name="name">
 			</div>
 			<div class="form-group">
-				<label for="title">제목</label> <input type="text"
-					class="form-control" id="title" placeholder="Enter title"
+				<label for="title">제목</label> 
+				<input type="text"
+					class="form-control" id="title" name="title" placeholder="Enter title"
 					>
 			</div>
 
@@ -39,5 +45,53 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
+	<%
+	request.setCharacterEncoding("utf-8");
+	String name = request.getParameter("name");
+	
+						
+	Class.forName("oracle.jdbc.OracleDriver");
+	Connection conn = DriverManager
+	.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kic24", "1234");
+	PreparedStatement pstmt=null;
+	if (name!=null&&!name.equals("")){
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+	String sql = 
+			"insert into guestbook values (bookseq.nextval,?,?,?,sysdate)";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, name);
+	pstmt.setString(2, title);
+	pstmt.setString(3, content);
+	int num = pstmt.executeUpdate();
+	}
+	
+	pstmt = conn.prepareStatement("select * from guestbook  order by regdate desc");
+	ResultSet rs = pstmt.executeQuery();
+	
+	
+	%>
+	<div class="container">
+	<table class="table">
+	<thead>
+	<tr>
+	<th>날자</th>
+	<th>이름</th>
+	<th>제목</th>
+	<th>내용</th>
+	</tr>	
+	</thead>
+	<tbody>
+	<%  while(rs.next()){ %>
+	<tr>
+	<td><%=rs.getString("regdate") %></td>
+	<td><%=rs.getString("name") %></td>
+	<td><%=rs.getString("title") %></td>
+	<td><%=rs.getString("content") %></td>
+	</tr>	
+	<% } %>
+	</tbody>	
+	</table>	
+	</div>	
 </body>
 </html>
