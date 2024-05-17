@@ -23,7 +23,7 @@ String url="index.jsp";
    String dpass = dao.getMember(id);
   if (dpass!=null) {
 	if (pass.equals(dpass)) {
-		//session
+		session.setAttribute("id", id);
 	} else {
 		msg="비밀번호가 맞지 않습니다";
 		url="login.jsp";	}

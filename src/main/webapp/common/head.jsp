@@ -18,12 +18,24 @@
 
 <nav class="navbar navbar-expand-sm bg-light">
   <ul class="navbar-nav">
+    <% if(session.getAttribute("id")==null) { %>
     <li class="nav-item">
       <a class="nav-link" href="<%=request.getContextPath() %>/ch08_kicmember/join.jsp">회원가입</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%=request.getContextPath() %>/ch08_kicmember/login.jsp">로그인</a>
     </li>
+    <% } else { %>
+     <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath() %>/ch08_kicmember/joinInfo.jsp">
+      회원정보[<%=session.getAttribute("id") %>]</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath() %>/ch08_kicmember/logout.jsp">로그아웃</a>
+    </li>
+    <% } %>
+    
+    
     <li class="nav-item">
       <a class="nav-link" href="#">공지사항</a>
     </li>

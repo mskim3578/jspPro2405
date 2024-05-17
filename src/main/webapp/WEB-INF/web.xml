@@ -35,6 +35,7 @@
   <location>/ch05_error/errorNumberFormat.jsp</location>
   </error-page>
    -->
+   <!-- layout model1, model2(mvc), springmvc -->  
   <jsp-config>
   <jsp-property-group>
   <url-pattern>/ch08_kicmember/*</url-pattern>

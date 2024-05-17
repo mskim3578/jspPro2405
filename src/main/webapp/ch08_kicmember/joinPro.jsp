@@ -22,7 +22,7 @@ String tel = request.getParameter("tel");
 String email = request.getParameter("email");
 
 KicMemberDAO  dao = new KicMemberDAO();
-KicMember kic = new KicMember();
+KicMember kic = new KicMember();  //DTO bean
 kic.setId(id);
 kic.setPass(pass);
 kic.setName(name);
