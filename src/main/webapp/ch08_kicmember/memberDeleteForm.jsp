@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로그인</title>
+<title>회원탈퇴</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -42,14 +42,15 @@ body {
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3  center">로그인</h4>
-				<form class="validation-form" novalidate  
-				    action="loginPro.jsp"  method="post">
+				<h4 class="mb-3  center">회원탈퇴</h4>
+				<form class="validation-form" novalidate      
+				action="memberDeletePro.jsp"     method="post">
 				
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="id">아이디</label> <input type="text"
-								class="form-control" id="id" placeholder="" value="" required name="id" >
+								class="form-control" id="id" placeholder="" 
+								value="<%=session.getAttribute("id") %>" readonly name="id" >
 							<div class="invalid-feedback">아이디를 입력해주세요.</div>
 						</div>
 						<div class="col-md-6 mb-3">
@@ -62,7 +63,7 @@ body {
 					
 					
 					<div class="mb-4"></div>
-					<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+					<button class="btn btn-primary btn-lg btn-block" type="submit">회원탈퇴</button>
 				</form>
 			</div>
 		</div>

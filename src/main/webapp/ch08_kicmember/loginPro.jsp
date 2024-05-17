@@ -1,3 +1,4 @@
+<%@page import="ch08.KicMember"%>
 <%@page import="ch08.KicMemberDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -20,9 +21,9 @@ String pass = request.getParameter("pass");
 KicMemberDAO  dao = new KicMemberDAO();
 String msg=id +"님이 로그인 하셨습니다";
 String url="index.jsp";
-   String dpass = dao.getMember(id);
-  if (dpass!=null) {
-	if (pass.equals(dpass)) {
+   KicMember mem = dao.getMember(id);
+  if (mem!=null) {
+	if (pass.equals(mem.getPass())) {
 		session.setAttribute("id", id);
 	} else {
 		msg="비밀번호가 맞지 않습니다";
