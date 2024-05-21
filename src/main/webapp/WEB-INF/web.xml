@@ -36,12 +36,27 @@
   </error-page>
    -->
    <!-- layout model1, model2(mvc), springmvc -->  
+  <!-- 
   <jsp-config>
   <jsp-property-group>
   <url-pattern>/ch08_kicmember/*</url-pattern>
   <include-prelude>/common/head.jsp</include-prelude>
   </jsp-property-group>  
-  </jsp-config>
+  </jsp-config> -->
+  
+  <servlet>
+  <servlet-name>ControllerDo</servlet-name>
+  <servlet-class>ch11.ControllerDo</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>ControllerDo</servlet-name>
+  <url-pattern>*.do</url-pattern> <!--  확장자방식 -->
+  </servlet-mapping>
+  
+  
+  
+  
   
   
   

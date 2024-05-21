@@ -31,7 +31,7 @@ public class Model2Servlet extends HttpServlet {
 		KicMember mem = dao.getMember(id);
         request.setAttribute("mem", mem);
         RequestDispatcher  disp = 
-        		request.getRequestDispatcher("/ch11_model2/joinInfo.jsp");
+        request.getRequestDispatcher("/ch11_model2/joinInfo.jsp");
 		disp.forward(request, response);
 	}
 
